@@ -28,6 +28,7 @@ function App() {
       <Radio value="1" checked={radio === "1"} onChange={handleChangeRadio} />
       <Radio value="2" checked={radio === "2"} onChange={handleChangeRadio} />
       <Radio value="2" checked={radio === "3"} onChange={handleChangeRadio} />
+      <Radio value="2" checked={radio === "4"} onChange={handleChangeRadio} />
 
       <h3>Select</h3>
       <Select />
