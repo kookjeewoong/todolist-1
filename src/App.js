@@ -5,6 +5,8 @@ import Input from "./components/input";
 import Radio from "./components/radio";
 import Select from "./components/select";
 import Slider from "./components/slider";
+//추가 컴포넌트
+import Textarea from "./components/textarea";
 
 
 
@@ -29,7 +31,7 @@ function App() {
       </p>
 
 <div className="panel panel-default">
-  <div className="panel-heading">Panel heading</div>
+  <div className="panel-heading">리스트</div>
   <table className="table table-bordered" style={{width:800}}>
     <thead>
       <tr>
@@ -54,25 +56,27 @@ function App() {
 </div>
 
       <h3>Input</h3>
-      <Input name="name"/>
+      <Input name="name" value="" />
 
       <h3>Checkbox</h3>
-      <Checkbox value="1" style={{width:20, height: 20}}/>
-      <Checkbox value="2" style={{width:20, height: 20}}/>
+      <label><Checkbox value="1" style={{width:20, height: 20}}/> 1</label> &nbsp;&nbsp;
+      <label><Checkbox value="2" style={{width:20, height: 20}}/> 2</label>
 
       <h3>Radio</h3>
-      <Radio value="0" checked={radio === "0"} onChange={handleChangeRadio} />
-      <Radio value="1" checked={radio === "1"} onChange={handleChangeRadio} />
-      <Radio value="2" checked={radio === "2"} onChange={handleChangeRadio} />
-      <Radio value="2" checked={radio === "3"} onChange={handleChangeRadio} />
-      <Radio value="2" checked={radio === "4"} onChange={handleChangeRadio} />
+      <label><Radio value="0" checked={radio === "0"} onChange={handleChangeRadio} /> 0 </label>&nbsp;&nbsp;
+      <label><Radio value="1" checked={radio === "1"} onChange={handleChangeRadio} /> 1 </label>&nbsp;&nbsp;
+      <label><Radio value="2" checked={radio === "2"} onChange={handleChangeRadio} /> 2 </label>&nbsp;&nbsp;
+      <label><Radio value="3" checked={radio === "3"} onChange={handleChangeRadio} /> 3 </label>&nbsp;&nbsp;
+      <label><Radio value="4" checked={radio === "4"} onChange={handleChangeRadio} /> 4 </label>&nbsp;&nbsp;
 
       <h3>Select</h3>
-      <Select><option value="1">1</option></Select>
+      <Select />
 
       <h3>Slider</h3>
       <Slider />
 
+      <h3>TextArea</h3>
+      <Textarea />
 
       <h3>Button</h3>
       <Button>체크</Button>
