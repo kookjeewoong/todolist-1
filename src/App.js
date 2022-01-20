@@ -15,13 +15,17 @@ function App() {
 
   return (
     <div>
-      <h1>Theme!!!</h1>
+      <p class="bg-warning">
+        <h1>Theme!!!</h1>
+      </p>
+      
 
       <h3>Input</h3>
       <Input />
 
       <h3>Checkbox</h3>
-      <Checkbox />
+      <Checkbox value="1" />
+      <Checkbox value="2" />
 
       <h3>Radio</h3>
       <Radio value="0" checked={radio === "0"} onChange={handleChangeRadio} />
@@ -31,7 +35,7 @@ function App() {
       <Radio value="2" checked={radio === "4"} onChange={handleChangeRadio} />
 
       <h3>Select</h3>
-      <Select />
+      <Select><option value="1">1</option></Select>
 
       <h3>Slider</h3>
       <Slider />
