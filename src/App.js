@@ -15,10 +15,9 @@ function App() {
 
   return (
     <div>
-      <p class="bg-warning">
-        <h1>Theme!!!</h1>
+      <p className="bg-warning">
+      Theme!!!
       </p>
-      
 
       <h3>Input</h3>
       <Input />
