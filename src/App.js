@@ -6,6 +6,9 @@ import Radio from "./components/radio";
 import Select from "./components/select";
 import Slider from "./components/slider";
 
+
+
+
 function App() {
   const [radio, setRadio] = React.useState()
 
@@ -13,18 +16,45 @@ function App() {
     setRadio(e.target.value)
   }
 
+
+
   return (
     <div>
       <p className="bg-warning">
       Theme!!!
       </p>
 
+<div className="panel panel-default">
+  <div className="panel-heading">Panel heading</div>
+  <table className="table table-bordered" style={{width:800}}>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+      </tr>
+      </thead>
+    <tbody>
+      <tr>
+        <td>윤</td>
+        <td>원열</td>
+        <td>윤원열</td>
+      </tr>
+      <tr>
+        <td>국</td>
+        <td>지웅</td>
+        <td>국지웅</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
       <h3>Input</h3>
-      <Input />
+      <Input name="name"/>
 
       <h3>Checkbox</h3>
-      <Checkbox value="1" />
-      <Checkbox value="2" />
+      <Checkbox value="1" style={{width:20, height: 20}}/>
+      <Checkbox value="2" style={{width:20, height: 20}}/>
 
       <h3>Radio</h3>
       <Radio value="0" checked={radio === "0"} onChange={handleChangeRadio} />
@@ -41,7 +71,7 @@ function App() {
 
 
       <h3>Button</h3>
-      <Button>클릭</Button>
+      <Button>체크</Button>
     </div>
   );
 }
