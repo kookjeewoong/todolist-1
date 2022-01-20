@@ -19,8 +19,12 @@ function App() {
 
 
   return (
-    <div>
-      <p className="bg-warning">
+
+    
+    <div className="container">
+
+
+      <p className="bg-info" style = {{width:800, height: 50}}>
       Theme!!!
       </p>
 
