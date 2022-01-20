@@ -40,6 +40,7 @@ function App() {
       <h3>Slider</h3>
       <Slider />
 
+
       <h3>Button</h3>
       <Button>클릭</Button>
     </div>
