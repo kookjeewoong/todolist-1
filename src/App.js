@@ -67,7 +67,7 @@ function App() {
       <label><Radio value="1" checked={radio === "1"} onChange={handleChangeRadio} /> 1 </label>&nbsp;&nbsp;
       <label><Radio value="2" checked={radio === "2"} onChange={handleChangeRadio} /> 2 </label>&nbsp;&nbsp;
       <label><Radio value="3" checked={radio === "3"} onChange={handleChangeRadio} /> 3 </label>&nbsp;&nbsp;
-      <label><Radio value="4" checked={radio === "4"} onChange={handleChangeRadio} /> 4 </label>&nbsp;&nbsp;
+      <label><Radio value="4" checked={radio === "4"} onChange={handleChangeRadio} /> 4 </label>
 
       <h3>Select</h3>
       <Select />
