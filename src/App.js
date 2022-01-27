@@ -24,7 +24,10 @@ function App() {
   }
 
   const handleSubmit = () => {
+    //const result = Object.values(form).every((v) => v !== "");
+    console.log("test");
 
+  };
   /*
     const result = Object.values(form).every((v) => v !== "");
 
@@ -32,7 +35,6 @@ function App() {
       axios.post("http://localhost:5050/v1/todo", form);
     }
   */
-  };
 
   /*
  const handleSubmit = (event: React.FormEvent) => {
@@ -90,14 +92,10 @@ function App() {
       <label><Radio value="4" checked={radio === "4"} onChange={handleChangeRadio} /> 4 </label>
 
       <h3>Select</h3>
-      <Select></Select>
-
-      <h3>Slider</h3>
-      <Slider />
+      <Select name="W_SELECT" />
 
       <h3>TextArea</h3>
-      <textarea></textarea>
-
+      <Textarea name="T_AREA"/>
       <h3>Button</h3>
       <Button onclick={handleSubmit}>체크</Button>
     </div>
