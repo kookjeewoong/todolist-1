@@ -14,9 +14,25 @@ import Textarea from "./components/textarea";
 function App() {
   const [radio, setRadio] = React.useState()
 
+/*
+  React.useEffect(() => {
+    axios.get("httpd://localhost:5050/v1/todo").then(({data}) => StyleSheetList(data));
+  }, []);
+*/
   const handleChangeRadio = (e) => {
     setRadio(e.target.value)
   }
+
+  const handleSubmit = () => {
+
+  /*
+    const result = Object.values(form).every((v) => v !== "");
+
+    if (result) {
+      axios.post("http://localhost:5050/v1/todo", form);
+    }
+  */
+  };
 
   /*
  const handleSubmit = (event: React.FormEvent) => {
@@ -74,16 +90,16 @@ function App() {
       <label><Radio value="4" checked={radio === "4"} onChange={handleChangeRadio} /> 4 </label>
 
       <h3>Select</h3>
-      <Select />
+      <Select></Select>
 
       <h3>Slider</h3>
       <Slider />
 
       <h3>TextArea</h3>
-      <Textarea />
+      <textarea></textarea>
 
       <h3>Button</h3>
-      <Button type="submit">체크</Button>
+      <Button onclick={handleSubmit}>체크</Button>
     </div>
   );
 }
