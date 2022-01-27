@@ -18,8 +18,12 @@ function App() {
     setRadio(e.target.value)
   }
 
-
-
+  /*
+ const handleSubmit = (event: React.FormEvent) => {
+  // do something 
+    event.preventDefault();
+  };
+*/
   return (
 
     
@@ -79,7 +83,7 @@ function App() {
       <Textarea />
 
       <h3>Button</h3>
-      <Button>체크</Button>
+      <Button type="submit">체크</Button>
     </div>
   );
 }
