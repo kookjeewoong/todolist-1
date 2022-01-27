@@ -4,7 +4,6 @@ import Checkbox from "./components/checkbox";
 import Input from "./components/input";
 import Radio from "./components/radio";
 import Select from "./components/select";
-import Slider from "./components/slider";
 //추가 컴포넌트
 import Textarea from "./components/textarea";
 
