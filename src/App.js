@@ -6,12 +6,29 @@ import Radio from "./components/radio";
 import Select from "./components/select";
 //추가 컴포넌트
 import Textarea from "./components/textarea";
+import axios from "axios";
 
 
 
 
 function App() {
   const [radio, setRadio] = React.useState()
+
+  const axios = require('axios'); // node.js쓸때 모듈 불러오기
+
+  axios.get('https://haja-api.webchemist.net/v1/todo')
+  .then(function (response) {
+    // 성공했을 때
+    console.log(response);
+  })
+  .catch(function (error) {
+    // 에러가 났을 때
+    console.log(error);
+  })
+  .finally(function () {
+    // 항상 실행되는 함수
+  });
+
 
 /*
   React.useEffect(() => {
@@ -43,12 +60,13 @@ function App() {
 */
   return (
 
-    
     <div className="container">
-
-
       <p className="bg-info" style = {{width:800, height: 50}}>
       Theme!!!
+      </p>
+
+      <p>
+      {axios}
       </p>
 
 <div className="panel panel-default">
