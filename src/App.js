@@ -1,3 +1,4 @@
+import { findByLabelText } from "@testing-library/react";
 import React from "react"
 import Button from "./components/button";
 import Checkbox from "./components/checkbox";
@@ -6,33 +7,20 @@ import Radio from "./components/radio";
 import Select from "./components/select";
 //추가 컴포넌트
 import Textarea from "./components/textarea";
+import Users from "./Users";
 
-
-
-
-const App = () => {
+function App() {
   const [radio, setRadio] = React.useState()
+  
+  //const axios = require('axios'); // node.js쓸때 모듈 불러오기
+  //const data = axios.get("https://haja-api.webchemist.net/v1/todo"); // 불러온 데이터를 저장한다
+  /*
 
-  const axios = require('axios'); // node.js쓸때 모듈 불러오기
+  fetch("https://haja-api.webchemist.net/v1/todo")
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
 
-  axios.get('https://haja-api.webchemist.net/v1/todo')
-  .then(function (response) {
-    // 성공했을 때
-    console.log(response);
-  })
-  .catch(function (error) {
-    // 에러가 났을 때
-    console.log(error);
-  })
-  .finally(function () {
-    // 항상 실행되는 함수
-  });
-
-
-/*
-  React.useEffect(() => {
-    axios.get("httpd://localhost:5050/v1/todo").then(({data}) => StyleSheetList(data));
-  }, []);
 */
   const handleChangeRadio = (e) => {
     setRadio(e.target.value)
@@ -43,6 +31,7 @@ const App = () => {
     console.log("test1");
 
   };
+
   /*
     const result = Object.values(form).every((v) => v !== "");
 
@@ -58,43 +47,20 @@ const App = () => {
   };
 */
   return (
-
+    
     <div className="container">
-      <p className="bg-info" style = {{width:800, height: 50}}>
-      Theme!!!
-      </p>
+      <p className="bg-info" style = {{width:800, height: 50}}>Theme!!!</p>
 
-      <p>
-      {axios}
-      </p>
+      <div className="panel panel-default">
+        <Users />
+      </div>
 
-<div className="panel panel-default">
-  <div className="panel-heading">리스트</div>
-  <table className="table table-bordered" style={{width:800}}>
-    <thead>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Username</th>
-      </tr>
-      </thead>
-    <tbody>
-      <tr>
-        <td>윤</td>
-        <td>원열</td>
-        <td>윤원열</td>
-      </tr>
-      <tr>
-        <td>국</td>
-        <td>지웅</td>
-        <td>국지웅</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
       <h3>Input</h3>
-      <Input name="name" value="" />
+      <div>
+      <label>제목 <Input name="title" value="" placeholder="제목" /></label>
+      <label>내용 <Textarea name="content" placeholder="내용"/></label>
+      </div>
 
       <h3>Checkbox</h3>
       <label><Checkbox value="1" style={{width:20, height: 20}}/> 1</label> &nbsp;&nbsp;
