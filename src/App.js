@@ -6,7 +6,6 @@ import Radio from "./components/radio";
 import Select from "./components/select";
 //추가 컴포넌트
 import Textarea from "./components/textarea";
-import axios from "axios";
 
 
 
