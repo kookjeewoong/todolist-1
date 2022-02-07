@@ -11,7 +11,7 @@ import axios from "axios";
 
 
 
-function App() {
+const App = () => {
   const [radio, setRadio] = React.useState()
 
   const axios = require('axios'); // node.js쓸때 모듈 불러오기
