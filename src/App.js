@@ -24,7 +24,7 @@ function App() {
 
   const handleSubmit = () => {
     //const result = Object.values(form).every((v) => v !== "");
-    console.log("test");
+    console.log("test1");
 
   };
   /*
