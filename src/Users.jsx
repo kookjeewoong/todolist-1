@@ -27,40 +27,45 @@ function Users() {
     fetchList();
   }, []);
 
-
-    //갹채를 업데이트하기위해 useState안에 객체를 사용
-    const [inputs, setInputs] = useState({  
-      title: '',
-      content: '',
+  //갹채를 업데이트하기위해 useState안에 객체를 사용
+  const [inputs, setInputs] = useState({
+    title: '',
+    content: '',
+    search_title : '',
   })
   //값을 가져오기 위해 inputs의 name으로 가져왔다
-  const { title, content, search_title } = inputs   
+  //제목, 콘텐츠, 검색조건
+  const {title, content, search_title} = inputs   
 
   const onChange = (e) => {
-  //input에 name을 가진 요소의 value에 이벤트를 걸었다
-  const { name, value } = e.target
+  e.preventDefault(); //전파방지
+  const { name, value } = e.target //input에 name을 가진 요소의 value에 이벤트를 걸었다
   // 변수를 만들어 이벤트가 발생했을때의 value를 넣어줬다
   const nextInputs = {//스프레드 문법으로 기존의 객체를 복사한다.
-          ...inputs,  
-          [name]: value,
-      }
-      setInputs(nextInputs) //만든 변수를 seInput으로 변경해준다.
-
-  }
- //안의 값을 초기화하는 객체를 변수에 넣었다
-  const onReset = () => {
-      const resetInputs = {       
-        title: '',
-          content: '',
-      }
- //초기화 객체값을 넣은 변수로 변경하도록 셋인풋 실행
-      setInputs(resetInputs)      
+    ...inputs,  
+    [name]: value,
   }
 
+  setInputs(nextInputs) //만든 변수를 seInput으로 변경해준다.
+
+  }
+
+  //안의 값을 초기화하는 객체를 변수에 넣었다
+  const onReset = (e) => {
+    e.preventDefault(); //전파방지
+
+    const resetInputs = {
+      title: '',
+      content: '',
+      search_title: '',
+    }
+
+    setInputs(resetInputs)//초기화 객체값을 넣은 변수로 변경하도록 셋인풋 실행
+  }
+
+  //전송
   const handleButton = (e) => {
-    console.log(e); //전파방지
-    console.log({content});
-
+    e.preventDefault(); //전파방지
     axios.post('https://haja-api.webchemist.net/v1/todo', {
       "title": title,
       "content": content,
@@ -77,15 +82,26 @@ function Users() {
       alert('실패하였습니다.');
     });
 
-}
+  }
 
-
-
-
-  const handleDelete = (e) => {
-    const del = e.target.getAttribute('del-msg'); // del-msg prop의 value를 가져옴
-
+  //검색
+  const handleSearch = (e) => {
     e.preventDefault(); //전파방지
+    console.log(search_title);
+    axios.post('https://haja-api.webchemist.net/v1/todo/' + search_title)
+    .then((response) => {
+      alert('조회 되었습니다.');
+      fetchList();
+    })
+    .catch((error) => {
+      alert('실패하였습니다.');
+    });
+  }
+
+  //삭제
+  const handleDelete = (e) => {
+    e.preventDefault(); //전파방지
+    const del = e.target.getAttribute('del-msg'); // del-msg prop의 value를 가져옴
     axios.delete('https://haja-api.webchemist.net/v1/todo/' + del)
     .then((response) => {
       alert('삭제되었습니다.');
@@ -95,8 +111,6 @@ function Users() {
       alert('실패하였습니다.');
     });
   }
-
-
 
   if (loading) return <div>로딩중..</div>;
   if (error) return <div>에러가 발생했습니다</div>;
@@ -110,7 +124,7 @@ function Users() {
           <p>
             <button onClick={fetchList}>리스트 갱신</button> &nbsp;&nbsp;
             <input name="title" placeholder="검색 조건" onChange={onChange} value={search_title} style={{width:200, height:30}} /> &nbsp;&nbsp;
-            <button type="button" onClick={handleButton}>전송</button>
+            <button type="button" onClick={handleSearch}>전송</button>
           </p>
         </div>
         <table className="table table-bordered table-condensed">
