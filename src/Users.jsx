@@ -57,7 +57,6 @@ function Users() {
     const resetInputs = {
       title: '',
       content: '',
-      search_title: '',
     }
 
     setInputs(resetInputs)//초기화 객체값을 넣은 변수로 변경하도록 셋인풋 실행
@@ -88,10 +87,9 @@ function Users() {
   const handleSearch = (e) => {
     e.preventDefault(); //전파방지
     console.log(search_title);
-    axios.post('https://haja-api.webchemist.net/v1/todo/' + search_title)
+    axios.get('https://haja-api.webchemist.net/v1/todo/' + search_title)
     .then((response) => {
-      alert('조회 되었습니다.');
-      fetchList();
+      alert(response.data.title + "\n" +response.data.content);
     })
     .catch((error) => {
       alert('실패하였습니다.');
@@ -123,8 +121,8 @@ function Users() {
         <div>
           <p>
             <button onClick={fetchList}>리스트 갱신</button> &nbsp;&nbsp;
-            <input name="title" placeholder="검색 조건" onChange={onChange} value={search_title} style={{width:200, height:30}} /> &nbsp;&nbsp;
-            <button type="button" onClick={handleSearch}>전송</button>
+            <input name="search_title" type="text" placeholder="검색 조건" onChange={onChange} value={search_title} style={{width:200, height:30}} /> &nbsp;&nbsp;
+            <button type="button" onClick={handleSearch}>검색</button>
           </p>
         </div>
         <table className="table table-bordered table-condensed">
