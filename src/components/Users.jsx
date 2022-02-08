@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Button from "./components/button";
 import axios from 'axios';
 
 function Users() {
@@ -38,7 +39,7 @@ function Users() {
       alert('실패하였습니다.');
     });
   }
-
+  
   if (loading) return <div>로딩중..</div>;
   if (error) return <div>에러가 발생했습니다</div>;
   if (!users) return null;
@@ -66,7 +67,7 @@ function Users() {
         }
         </tbody>
         </table>
-      <button onClick={fetchList}>리스트 불러오기</button>
+        <button type="button" onClick={fetchList}>리스트 불러오기</button>
     </>
   );
 }
