@@ -8,7 +8,7 @@ function Users() {
 
   const fetchList = async () => {
     try {
-      // 요청이 시작 할 때에는 error 와 users 를 초기화하고
+      //요청 시작시 error 와 users 를 초기화 한다.
       setError(null);
       setUsers(null);
       // loading 상태를 true 로 바꿉니다.
@@ -16,7 +16,7 @@ function Users() {
       const response = await axios.get(
         'https://haja-api.webchemist.net/v1/todo/'
       );
-      setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
+      setUsers(response.data); // 데이터는 response.data 안에 들어있음.
     } catch (e) {
       setError(e);
     }
@@ -27,13 +27,13 @@ function Users() {
     fetchList();
   }, []);
 
-  //갹채를 업데이트하기위해 useState안에 객체를 사용
+  //객체를 업데이트하기위해 useState안에 객체 사용
   const [inputs, setInputs] = useState({
     title: '',
     content: '',
     search_title : '',
   })
-  //값을 가져오기 위해 inputs의 name으로 가져왔다
+  //값을 가져오기 위해 inputs의 name으로 가져옴
   //제목, 콘텐츠, 검색조건
   const {title, content, search_title} = inputs   
 
@@ -41,7 +41,7 @@ function Users() {
   e.preventDefault(); //전파방지
   const { name, value } = e.target //input에 name을 가진 요소의 value에 이벤트를 걸었다
   // 변수를 만들어 이벤트가 발생했을때의 value를 넣어줬다
-  const nextInputs = {//스프레드 문법으로 기존의 객체를 복사한다.
+  const nextInputs = {
     ...inputs,  
     [name]: value,
   }
@@ -84,6 +84,7 @@ function Users() {
   }
 
   //검색
+  //todo: 이 부분 fetchList에 값을 전달해서 조회한건만 나오게 해야 하지 않을까?
   const handleSearch = (e) => {
     e.preventDefault(); //전파방지
     console.log(search_title);
