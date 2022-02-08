@@ -5,7 +5,7 @@ import Users from "./Users";
 function App() {
   return (
     <div className="container">
-      <p className="bg-info" style = {{width:800, height: 50}}>Theme!!!</p>
+      <p className="bg-info" style = {{width:800, height: 50}}>상단메뉴</p>
 
       <div className="panel panel-default">
         <Users />
