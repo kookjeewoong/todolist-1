@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Input from "./components/input";
+import Textarea from "./components/textarea";
 
 function Users() {
   const [users, setUsers] = useState(null);
@@ -27,9 +29,33 @@ function Users() {
     fetchList();
   }, []);
 
-  const handleDelete = (e) => {
+  const hadleButton = (e) => {
+    console.log(e.target.value);
     e.preventDefault(); //전파방지
-    axios.delete('https://haja-api.webchemist.net/v1/todo/6201e9626009cc6edfefd935')
+    /*
+    axios.post('https://haja-api.webchemist.net/v1/todo', {
+      "title": '냐옹',
+      "content": '테스트',
+      "date": new Date(),
+      "deleted": new Date(),
+      "createdAt": new Date(),
+      "updatedAt": new Date(),
+    })
+    .then((response) => {
+      alert('저장되었습니다.');
+      fetchList(); //전송시 리스트 갱신
+    })
+    .catch((error) => {
+      alert('실패하였습니다.');
+    });
+    */
+  }
+
+  const handleDelete = (e) => {
+    const del = e.target.getAttribute('del-msg'); // del-msg prop의 value를 가져옴
+
+    e.preventDefault(); //전파방지
+    axios.delete('https://haja-api.webchemist.net/v1/todo/' + del)
     .then((response) => {
       alert('삭제되었습니다.');
       fetchList();
@@ -42,6 +68,7 @@ function Users() {
   if (loading) return <div>로딩중..</div>;
   if (error) return <div>에러가 발생했습니다</div>;
   if (!users) return null;
+  
   return (
     <>
         <table className="table table-bordered table-condensed">
@@ -60,13 +87,20 @@ function Users() {
               <td>{dt.title}</td>
               <td>{dt.content}</td>
               <td>{dt.date}</td>
-              <td><button type="button" onClick={handleDelete} rowkey ="{dt._id}">삭제</button><br />{dt._id}</td>
+              <td><button onClick={handleDelete} del-msg={dt._id}>삭제</button><br />{dt._id}</td>
             </tr>
         ))
         }
         </tbody>
         </table>
       <button onClick={fetchList}>리스트 불러오기</button>
+      <button onClick={hadleButton}>전송</button>
+
+      <h3>Input</h3>
+      <div>
+        <label>제목 <Input name="title" value="" /></label>
+        <label>내용 <Textarea name="content" placeholder="내용" /></label>
+      </div>
     </>
   );
 }
